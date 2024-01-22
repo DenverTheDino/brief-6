@@ -8,7 +8,7 @@
 </head>
 <body>
     <header>
-  <h1 class="text-3xl font-bold underline text-center mt-6 mb-6">
+  <h1 class="text-4xl capitalize font-bold text-center mt-6 mb-6 drop-shadow-lg text-rose-800">
     Hello world!
   </h1>
 </header>
