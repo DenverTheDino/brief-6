@@ -32,10 +32,38 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
       
     
 ?>
+ <?php
+          // Affichage (SELECT) :
+
+
+
+
+      if(isset($_GET['categorie'],$_GET['categorie']) && $_GET['categorie'] !== "none" && $_GET['domaine'] !== "none"){
+        $result = $pdo->query("SELECT * FROM favoris INNER JOIN cat_fav ON favoris.id_fav=cat_fav.id_fav INNER JOIN domaine ON favoris.id_dom=domaine.id_dom INNER JOIN categorie ON cat_fav.id_cat=categorie.id_cat WHERE categorie.id_cat=".$_GET['categorie']." AND domaine.id_dom=".$_GET['domaine'].";");
+        $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
+      }else{
+        if(isset($_GET['domaine']) && $_GET['domaine'] !== "none" && $_GET['categorie'] == "none"){
+        $result = $pdo->query("SELECT * FROM favoris INNER JOIN domaine ON favoris.id_dom=domaine.id_dom WHERE domaine.id_dom=".$_GET['domaine']." ORDER BY id_fav ASC;");
+        $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
+      }else{
+        if(isset($_GET['categorie']) && $_GET['categorie'] !== "none" && $_GET['domaine'] == "none"){
+          $result = $pdo->query("SELECT * FROM favoris INNER JOIN cat_fav ON favoris.id_fav=cat_fav.id_fav INNER JOIN domaine ON favoris.id_dom=domaine.id_dom INNER JOIN categorie ON cat_fav.id_cat=categorie.id_cat WHERE categorie.id_cat=".$_GET['categorie'].";");
+          $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
+        }else{
+          $result = $pdo->query("SELECT * FROM favoris INNER JOIN domaine ON favoris.id_dom=domaine.id_dom ORDER BY id_fav ASC;");
+          $favoris = $result->fetchAll(PDO::FETCH_ASSOC); 
+        }
+
+      }
+
+      }
+    ?> 
     <form action="" method="get" class="text-center ">
-        <select id="monselect" name="filtre" class="border border-amber-900" >
+        <select id="monselect" name="categorie" class="border border-amber-900" >
+            <option value="none">cat</option>
             <?php foreach ($categorie as $unecat) { ?>
-            <option value="uneoption"><?php echo $unecat['nom_cat']?></option>            
+                
+            <option value="<?php echo $unecat['id_cat']?>"><?php echo $unecat['nom_cat']?></option>            
         <?php
         }
         ?>
@@ -43,9 +71,11 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
         <button type="submit" class="border border-amber-900">Selectionner</button>
     </form>
     <form action="" method="get" class="text-center ">
-        <select id="monselect" name="filtre"  class="border border-amber-900">
-            <?php foreach ($domaines as $undom) { ?>
-            <option value="uneoption"><?php echo $undom['nom_dom']?></option>            
+        <select id="monselect" name="domaine"  class="border border-amber-900">
+            <option value="none">dom</option>
+            =<?php foreach ($domaines as $undom) { ?>
+                
+            <option value="<?php echo $undom['id_dom']?>"><?php echo $undom['nom_dom']?></option>            
         <?php
         }
         ?>
