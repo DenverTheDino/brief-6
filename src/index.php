@@ -12,8 +12,46 @@ $favoris = $result->fetchALL(PDO::FETCH_ASSOC);
 $domaines = $result->fetchALL(PDO::FETCH_ASSOC); 
 
 ?>
+<?php
+    $result = $pdo->query("SELECT * FROM domaine ");
+    $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
+    
+?>
+<?php
+    $result = $pdo->query("SELECT * FROM categorie ");
+    $categorie = $result->fetchALL(PDO::FETCH_ASSOC);
+    
+?>
 
     <section id="bookmark">
+    <?php
+    if (isset($_GET['filtre']))
+    {
+        
+    }
+      
+    
+?>
+    <form action="" method="get" class="text-center ">
+        <select id="monselect" name="filtre" class="border border-amber-900" >
+            <?php foreach ($categorie as $unecat) { ?>
+            <option value="uneoption"><?php echo $unecat['nom_cat']?></option>            
+        <?php
+        }
+        ?>
+        </select>
+        <button type="submit" class="border border-amber-900">Selectionner</button>
+    </form>
+    <form action="" method="get" class="text-center ">
+        <select id="monselect" name="filtre"  class="border border-amber-900">
+            <?php foreach ($domaines as $undom) { ?>
+            <option value="uneoption"><?php echo $undom['nom_dom']?></option>            
+        <?php
+        }
+        ?>
+        </select>
+        <button type="submit" class="border border-amber-900">Selectionner</button>
+    </form>  
         <table class="flex justify-center mb-5">
             <tr class=" border border-amber-900 bg-emerald-300 " >
                 <th class=" border border-amber-900 text-fuchsia-600">ID Favori</th>
@@ -43,7 +81,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
            ?>
         </table>
         
-        <!-- <table class="bookmark__table flex justify-center">
+        <table class="bookmark__table flex justify-center">
             <tr class=" border border-amber-900 bg-emerald-300">
                 <th class=" border border-amber-900">ID_nom</th>
                 <th class=" border border-amber-900">Nom_Dom</th>   
@@ -59,7 +97,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
             <?php
            }
            ?>
-        </table>  -->
+        </table> 
 
     </section>
     
