@@ -6,7 +6,7 @@
   <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
   <link href="./output.css" rel="stylesheet">
 </head>
-<body>
+<body class="bg-orange-300">
     <header>
   <h1 class="text-4xl capitalize font-bold text-center mt-6 mb-6 drop-shadow-lg text-rose-800">
     Hello world!

@@ -49,7 +49,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
             }else{
                 $requestsql= "SELECT * FROM favoris INNER JOIN domaine ON favoris.id_dom=domaine.id_dom ORDER BY id_fav ASC";
                 $result = $pdo->query($requestsql);
-                var_dump($requestsql);
+                
             }
     
           }
@@ -62,7 +62,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
       
       $favoris = $result->fetchAll(PDO::FETCH_ASSOC);
     ?> 
-    <form action="" method="get" class="text-center ">
+    <form action="" method="get" class="text-center mb-5  ">
         <select id="monselect" name="categorie" class="border border-amber-900" >
             <option value="none">cat</option>
             <?php foreach ($categorie as $unecat) { ?>
@@ -73,7 +73,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
         ?>
         </select>
         <select id="monselect" name="domaine"  class="border border-amber-900">
-            <option value="none">dom</option>
+            <option value="none" autofocus >dom </option>
             =<?php foreach ($domaines as $undom) { ?>
                 
             <option value="<?php echo $undom['id_dom']?>"><?php echo $undom['nom_dom']?></option>            
@@ -81,34 +81,35 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
         }
         ?>
         </select>
-        <label for="site-search">Search the site:</label>
-        <input type="search" id="" name="search" />
+        
+        <label class="border border-amber-900" for="site-search">Search the site:</label>
+        <input type="search" id="" name="search" placeholder="html"/>
         <button type="submit" class="border border-amber-900">Filtrer</button>
         
     </form>  
-        <table class="flex justify-center mb-5">
-            <tr class=" border border-amber-900 bg-emerald-300 " >
-                <th class=" border border-amber-900 text-fuchsia-600">ID Favori</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Libellée</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Date ajout</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Url</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Nom de domaine</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Update</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Delete</th>
-                <th class=" border border-amber-900 text-fuchsia-600">Voir </th>
+        <table class="flex justify-center mb-5 mt-5">
+            <tr class="border border-2-red-200">
+                <th>ID Favori</th>
+                <th>Libellée</th>
+                <th>Date ajout</th>
+                <th>Url</th>
+                <th>Nom de domaine</th>
+                <th>Update</th>
+                <th>Delete</th>
+                <th>Voir </th>
             </tr>
             <?php
             foreach ($favoris as $fav){
             ?>
-            <tr class=" border border-amber-900 hover:bg-sky-200 odd:bg-white even:bg-slate-200">
-                <td class=" border-2 border-amber-200 text-center underline"><?php echo $fav['id_fav'] ?></td>
-                <td class=" border-2 border-amber-200"><?php echo $fav['libelle'] ?></td>
-                <td class=" border-2 border-amber-200"><?php echo $fav['date_creation']?></td>
-                <td class=" border-2 border-amber-200"><a href="<?php echo $fav['url']?>"> <?php echo $fav['url']?></a></td>
-                <td class=" border-2 border-amber-200 text-center"><?php echo $fav['nom_dom']?></td>
-                <td class=" border-2 border-amber-200 bg-sky-700 hover:bg-sky-700" ><button class="mx-4 1/5"><i class="fa-solid fa-lemon"></i></button></td>
-                <td class=" border-2 border-amber-200 bg-red-700 hover:bg-sky-700"><button class="mx-4 1/5"><i class="fa-solid fa-feather"></i></i></button></td>
-                <td class=" border-2 border-amber-200 bg-green-400 hover:bg-sky-700"><button class="mx-4 1/5"><i class="fa-solid fa-magnifying-glass"></i></i></i></button></td>
+            <tr class=" border border-2-red-200 hover:bg-sky-200 odd:bg-white even:bg-slate-200 ">
+                <td class="border border-2-red-200"><?php echo $fav['id_fav'] ?></td>
+                <td class="border border-2-red-200"><?php echo $fav['libelle'] ?></td>
+                <td class="border border-2-red-200"><?php echo $fav['date_creation']?></td>
+                <td class="border border-2-red-200"><a href="<?php echo $fav['url']?>"> <?php echo $fav['url']?></a></td>
+                <td class="border border-2-red-200"><?php echo $fav['nom_dom'] ?></td>
+                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl" ><button class="mx-4 1/5"><i class="fa-solid fa-rotate"></i></button></td>
+                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button class="mx-4 1/5"><i class="fa-solid fa-trash"></i></i></button></td>
+                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button class="mx-4 1/5"><i class="fa-solid fa-eye"></i></button></td>
             </tr>
             <?php
            }

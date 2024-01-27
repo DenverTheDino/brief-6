@@ -1,4 +1,19 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=fav', 'root', '', array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)); 
-// Affichage (SELECT) : 
-$result = $pdo->query("SELECT * FROM favoris"); $favori = $result->fetch(PDO::FETCH_ASSOC);  
-// echo "Bonjour je suis $employe[prenom] $employe[nom] du service $employe[service]<br>"; //-----------------------------------------------------------------
+
+
+<?php 
+require("connect.php");
+
+$dsn = 'mysql:host='.SERVER.';dbname='.BASE;
+
+try {
+
+    $pdo = new PDO($dsn, USER, PASSWORD, array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION)); 
+    // Affichage (SELECT) : 
+    
+} catch (PDOException $e){
+    echo"Echec de la connexion %s\n" .$e->getMessage();
+    exit();
+
+}
+
+?>
