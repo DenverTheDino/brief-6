@@ -109,7 +109,9 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
                 <td class="border border-2-red-200"><?php echo $fav['nom_dom'] ?></td>
                 <td class=" border border-2-red-200hover:bg-sky-200 text-2xl" ><button class="mx-4 1/5"><i class="fa-solid fa-rotate"></i></button></td>
                 <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button class="mx-4 1/5"><i class="fa-solid fa-trash"></i></i></button></td>
-                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button class="mx-4 1/5"><i class="fa-solid fa-eye"></i></button></td>
+                <form action= "page.php" method="get">
+                    <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button name="id_favori" value="<?php echo  $fav['id_fav'] ?>" class="mx-4 1/5"><i class="fa-solid fa-eye"></i></button></td>
+                </form>
             </tr>
             <?php
            }
