@@ -8,7 +8,7 @@ $result = $pdo->query("SELECT * FROM `favoris` WHERE id_fav = " . $_GET['id_favo
 $favoris = $result->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<table class="border border-pink-500 mx-36 mt-40  justify center " >
+<table class="border border-pink-500 mx-36 mt-40 justify center " >
   <thead>
     <tr>
       <th class=" ">ID favori</th>
