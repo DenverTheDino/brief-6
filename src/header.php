@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/0a3766d4f1.js" crossorigin="anonymous"></script>
   <link href="./output.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/script.js" defer ></script>
 </head>
 <body class="bg-orange-300">
     <header>
