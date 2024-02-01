@@ -122,7 +122,9 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
                 <td class="border border-2-red-200"><?php echo $fav['date_creation']?></td>
                 <td class="border border-2-red-200"><a href="<?php echo $fav['url']?>"> <?php echo $fav['url']?></a></td>
                 <td class="border border-2-red-200"><?php echo $fav['nom_dom'] ?></td>
-                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl" ><button class="mx-4 1/5"><i class="fa-solid fa-rotate"></i></button></td>
+                <form action="update.php" method="get">
+                <td class=" border border-2-red-200hover:bg-sky-200 text-2xl" ><button name="id_fav" type="submit" value="<?php echo  $fav['id_fav'] ?>" class="mx-4 1/5 "><i class="fa-solid fa-rotate"></i></button></td>
+                </form>
                 <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button onclick="afficher_modal(<?php echo $fav['id_fav']?>)" id="myBtn<?php echo $fav['id_fav']?>" value="<?php echo $fav['id_fav']?>" name="actiondelete"class="mx-4 1/5"><i class="fa-solid fa-trash"></i></button></td>
                 <form action= "page.php" method="get">
                     <td class=" border border-2-red-200hover:bg-sky-200 text-2xl"><button name="id_fav" value="<?php echo  $fav['id_fav'] ?>" class="mx-4 1/5"><i class="fa-solid fa-eye"></i></button></td>
