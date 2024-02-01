@@ -101,7 +101,11 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
         <input type="search" id="" name="search" placeholder="html"/>
         <button type="submit" class="border border-amber-900">Filtrer</button>
         
-    </form>  
+        
+    </form>
+    <form action="create.php" method="post" class="text-center">
+        <button type="submit" class="border border-amber-900">Création</button>
+    </form> 
         <table class="flex justify-center mb-5 mt-5">
             <tr class="border border-2-red-200">
                 <th>ID Favori</th>
