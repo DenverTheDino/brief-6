@@ -7,8 +7,37 @@ $requestsql =" SELECT libelle, url FROM `favoris` WHERE id_fav = " . $_GET["id_f
 $result = $pdo->query($requestsql);
 
 $favoris = $result->fetch(PDO::FETCH_ASSOC);
-var_dump($favoris)
 
+$requestsql =" SELECT * FROM `categorie`";
+$result = $pdo->query($requestsql);
+$categories = $result->fetchAll(PDO::FETCH_ASSOC);
+
+$requestsql =" SELECT * FROM `domaine`";
+$result = $pdo->query($requestsql);
+
+$domaines = $result->fetchAll(PDO::FETCH_ASSOC);
+
+if (!empty($_POST)) {
+        $formup = true;
+        if    (empty($_POST['libellee'])){
+            $formup = false;
+        }
+        if    (empty($_POST['url'])){
+            $formup = false;
+        }
+    
+        if ($formup == true) {
+           
+        $requestsql = " UPDATE favoris SET libelle = '".$_POST['libellee'] . "', url = '".$_POST['url'] . "', id_dom = ".$_POST['domaines'] . "  WHERE id_fav= " . $_GET['id_fav'];
+                $result = $pdo->query($requestsql);
+        $updatecatfav = " UPDATE cat_fav SET id_cat= ".$_POST['categorie'] . " WHERE id_fav =  " . $_GET['id_fav'];
+                $result = $pdo->query($updatecatfav);  
+        header('Location: index.php');
+
+
+        }
+
+}
 ?>
 <form action="" method="post" class="text-center">
    <p> </p>
@@ -18,6 +47,28 @@ var_dump($favoris)
         <label for="url">modifier l'url: </label>
         <input value="<?php echo $favoris['url']?>" type="text" name="url" id="url" require/>
         
-        <input type="submit" value="modifier"/>
+        <select name="categorie" id="categorie">
+            <?php
+            foreach ($categories as $cat) {
+                ?>
+                    <option value="<?php echo $cat['id_cat'] ?>"><?php echo $cat['nom_cat'] ?></option>
+                <?php       
+                }   
+                
+                ?>
+        </select>
+        <select name="domaines" id="domaines">
+            <?php
+            foreach ($domaines as $dom) {
+                ?>
+                    <option  value="<?php echo $dom['id_dom'] ?>"><?php echo $dom['nom_dom'] ?></option>
+                <?php       
+                }   
+                
+                ?>
+        </select>
+
+        
+        <button type="submit" value="modifier">Modifier</button>
 
 </form>
