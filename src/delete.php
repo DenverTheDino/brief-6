@@ -1,10 +1,9 @@
 <?php include("pdo.php");
 
-if(isset($_GET['id_fav'])) {
-    $record_id = $_GET['id_fav'];
-    print_r($record_id);
+if(isset($_GET['id_favori'])) {
+    $record_id = $_GET['id_favori'];
 
-    $requeteSQL = "DELETE FROM favoris WHERE id_fav =". $_GET['id_fav'];
+    $requeteSQL = "DELETE FROM favoris WHERE id_fav =". $_GET['id_favori'];
     // A decommenter si  suprimer
     // $delete = $pdo->query($requeteSQL);
     // Votre code de suppression d'enregistrement ici...
@@ -14,6 +13,7 @@ if(isset($_GET['id_fav'])) {
     // Par exemple, si vous avez utilisé une fonction de suppression de votre framework ORM ou une requête SQL DELETE
     // Vous pouvez remplacer cette condition par votre propre logique de suppression
     // Exemple :
+    $pdo->query($requeteSQL);
     $is_deleted = true; // Supposons que l'enregistrement a été supprimé avec succès
 
     if ($is_deleted) {
