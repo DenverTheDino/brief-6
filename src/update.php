@@ -28,10 +28,12 @@ if (!empty($_POST)) {
     
         if ($formup == true) {
            
-        $requestsql = " UPDATE favoris SET libelle = '".$_POST['libellee'] . "', url = '".$_POST['url'] . "', id_dom = ".$_POST['domaines'] . "  WHERE id_fav= " . $_GET['id_fav'];
-                $result = $pdo->query($requestsql);
-        $updatecatfav = " UPDATE cat_fav SET id_cat= ".$_POST['categorie'] . " WHERE id_fav =  " . $_GET['id_fav'];
-                $result = $pdo->query($updatecatfav);  
+         $requestsql = " UPDATE favoris SET libelle = '".$_POST['libellee'] . "', url = '".$_POST['url'] . "', id_dom = ".$_POST['domaines'] . "  WHERE id_fav= " . $_GET['id_fav'];
+                  $result = $pdo->query($requestsql);
+        $deletecatfav = " DELETE  FROM cat_fav WHERE id_fav =  " . $_GET['id_fav'];
+                $result = $pdo->query($deletecatfav);
+        $updatecatfav = "INSERT INTO cat_fav VALUES ( " . $_GET['id_fav'] . ",  ".$_POST['categorie'] . " ); ";           
+                $pdo->query($updatecatfav);
         header('Location: index.php');
 
 
