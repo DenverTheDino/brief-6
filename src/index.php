@@ -106,26 +106,31 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
     <form action="create.php" method="post" class="text-center">
         <button type="submit" class="border border-amber-900">Création</button>
     </form> 
-        <table class="flex justify-center mb-5 mt-5">
-            <tr class="border border-2-red-200">
-                <th>ID Favori</th>
-                <th>Libellée</th>
-                <th>Date ajout</th>
-                <th>Url</th>
-                <th>Nom de domaine</th>
-                <th>Update</th>
-                <th>Delete</th>
-                <th>Voir </th>
+        <table class="w-full md:w-32 lg:w-48 ">
+            <thead class="bg-gray-50 border-b-2 border-gray-200">
+            <tr>
+                <th class=" w-20 p-3 text-sm font-semibold tracking-wide text-left">ID Favori</th>
+                <th class="p-3 text-sm font-semibold tracking-wide text-left">Libellée</th>
+                <th class=" p-3 text-sm font-semibold tracking-wide text-left">Date ajout</th>
+                <th class="p-3 text-sm font-semibold tracking-wide text-center">Url</th>
+                <th class=" p-3 text-sm font-semibold tracking-wide text-left">Nom de domaine</th>
+                <th class=" w-24 p-3 text-sm font-semibold tracking-wide text-left">Update</th>
+                <th class=" w-24 p-3 text-sm font-semibold tracking-wide text-left">Delete</th>
+                <th class=" w-24p-3 text-sm font-semibold tracking-wide text-left">Voir </th>
             </tr>
+            </thead>
+            <tbody class=" divide-y divide-gray-100">
+
             <?php
             foreach ($favoris as $fav){
             ?>
-            <tr class=" border border-2-red-200 hover:bg-sky-200 odd:bg-white even:bg-slate-200 ">
-                <td class="border border-2-red-200"><?php echo $fav['id_fav'] ?></td>
-                <td class="border border-2-red-200"><?php echo $fav['libelle'] ?></td>
-                <td class="border border-2-red-200"><?php echo $fav['date_creation']?></td>
-                <td class="border border-2-red-200"><a href="<?php echo $fav['url']?>"> <?php echo $fav['url']?></a></td>
-                <td class="border border-2-red-200"><?php echo $fav['nom_dom'] ?></td>
+
+            <tr class=" bg-gray ">
+                <td class="p-3 text-sm text-gray-700 whitespace-nowrap "><?php echo $fav['id_fav'] ?></td>
+                <td class="class= p-3 text-sm text-gray-700 whitespace-nowrap"><?php echo $fav['libelle'] ?></td>
+                <td class="class= p-3 text-sm text-gray-700 whitespace-nowrap"><?php echo $fav['date_creation']?></td>
+                <td class="class= p-3 text-sm text-gray-700 whitespace-nowrap"><a class="font-bold text-blue-500 hover:underline" href="<?php echo $fav['url']?>"> <?php echo $fav['url']?></a></td>
+                <td class="class= p-3 text-sm text-gray-700 whitespace-nowrap"><?php echo $fav['nom_dom'] ?></td>
                 <form action="update.php" method="get">
                 <td class=" border border-2-red-200hover:bg-sky-200 text-2xl" ><button name="id_fav" type="submit" value="<?php echo  $fav['id_fav'] ?>" class="mx-4 1/5 "><i class="fa-solid fa-rotate"></i></button></td>
                 </form>
@@ -137,6 +142,7 @@ $domaines = $result->fetchALL(PDO::FETCH_ASSOC);
             <?php
            }
            ?>
+        </tbody>
         </table>
         
         <!-- <table class="bookmark__table flex justify-center">
