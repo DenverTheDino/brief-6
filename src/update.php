@@ -41,7 +41,7 @@ if (!empty($_POST)) {
 
 }
 ?>
-<form action="" method="post" class="text-center">
+<form action="" method="post" class="text-center  sm:text-left grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
    <p> </p>
         <label for="libelle">Modifier le libelee</label>
         <input value="<?php echo $favoris['libelle']?>" type="text" name="libellee" id="libellee" require/>

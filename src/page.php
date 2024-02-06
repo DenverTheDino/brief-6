@@ -4,11 +4,11 @@
 require("pdo.php");
 include ("header.php");
 
-$result = $pdo->query("SELECT * FROM `favoris` WHERE id_fav = " . $_GET['id_favori']);
+$result = $pdo->query("SELECT * FROM `favoris` WHERE id_fav = " . $_GET['id_fav']);
 $favoris = $result->fetch(PDO::FETCH_ASSOC);
 ?>
 
-<table class="border border-pink-500 mx-36 mt-40 justify center " >
+<table class="border border-pink-500 mx-36 mt-40 justify center w-16  sm:w-38 sm:mx-25 sm:mt-auto lg:w-48  " >
   <thead>
     <tr>
       <th class=" ">ID favori</th>
